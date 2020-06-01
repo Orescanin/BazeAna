@@ -46,7 +46,6 @@ public class MainFrame extends JFrame implements Subscriber {
 		
 		
 
-		//pack();
 
 		
 		//jTable=new JTable(tableModel);
@@ -58,7 +57,7 @@ public class MainFrame extends JFrame implements Subscriber {
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
 		int screenWidth = screenSize.width;
-		setSize(screenWidth / 2, screenHeight / 2);
+		setSize(screenWidth/2 , screenHeight/2 );
 		setLocationRelativeTo(null);
 		setTitle("BazeBaze");
 		
@@ -73,14 +72,12 @@ public class MainFrame extends JFrame implements Subscriber {
 		horizSplit.setOneTouchExpandable(false);
 		this.add(horizSplit,BorderLayout.CENTER);
 		
-		this.pack();
 		setLocationRelativeTo(null);
 		this.setVisible(true);
 		
 		
 		
 		
-		//setLocationRelativeTo(null);
 		
 		
 	}
@@ -123,12 +120,12 @@ public class MainFrame extends JFrame implements Subscriber {
 			
 			 JPanel panel=new JPanel();
 			 
-			 
 			 panel.setBackground(Color.white);
 			 panel.setLayout(new BorderLayout());
 			 System.out.println(panel);
 			 panel.add(stablo,BorderLayout.WEST);
 			 horizSplit.setLeftComponent(panel);
+			 horizSplit.setDividerLocation(145);
 			 stablo.addMouseListener(new DoubleClickAction());
 			
 			 
