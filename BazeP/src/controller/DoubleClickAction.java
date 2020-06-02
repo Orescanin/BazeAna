@@ -37,11 +37,10 @@ public class DoubleClickAction extends MouseAdapter {
 				
 				MainFrame.getInstance().getAppCore().getTableModel().setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(nodePressed.getName()));
 				jTable = MainFrame.getInstance().getjTable();
-				jsc=new JScrollPane(jTable);
-				tabPane.openTab(nodePressed, jsc);
+				tabPane.openTab(nodePressed, jTable);
 				System.out.println(jTable.getColumnName(0));
-				//System.out.println(nodePressed.getName());
 				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getStablo());
+				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
 			}
 
 		}

@@ -8,7 +8,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import javax.swing.JTable;
-
+import javax.swing.JTextArea;
 
 import resource.DBNodeComposite;
 import resource.implementation.Entity;
@@ -30,19 +30,18 @@ public class MyTabPane extends JTabbedPane {
 	
 	public MyTabPane() {
 		nodes=new ArrayList<>();
-		setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+		setBorder(BorderFactory.createLineBorder(Color.GRAY));
 	}
 	
 	
-	public void openTab(DBNodeComposite node, JScrollPane panel) {
+	public void openTab(DBNodeComposite node, JTable panel) {
 		
 		if(node instanceof Entity) {
 			if(!nodes.contains(node)) {
 				nodes.add(node);
 				myTab=new MyTab(node.getName(), panel);
-				
 				imeTaba=node.getName();
-				addTab(imeTaba,myTab);
+				addTab(imeTaba,panel);
 				tabs.add(myTab);
 				
 			}
