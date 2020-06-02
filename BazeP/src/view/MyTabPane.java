@@ -34,14 +34,14 @@ public class MyTabPane extends JTabbedPane {
 	}
 	
 	
-	public void openTab(DBNodeComposite node, JTable panel) {
+	public void openTab(DBNodeComposite node, JScrollPane jsc) {
 		
 		if(node instanceof Entity) {
 			if(!nodes.contains(node)) {
 				nodes.add(node);
-				myTab=new MyTab(node.getName(), panel);
+				myTab=new MyTab(node.getName(), jsc);
 				imeTaba=node.getName();
-				addTab(imeTaba,panel);
+				addTab(imeTaba,jsc);
 				tabs.add(myTab);
 				
 			}

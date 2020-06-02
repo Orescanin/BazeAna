@@ -7,7 +7,7 @@ import database.settings.Settings;
 import database.settings.SettingsImplementation;
 import view.MainFrame;
 import view.TableModel;
-import lombok.Data;
+
 import observer.Notification;
 import observer.Publisher;
 import observer.Subscriber;

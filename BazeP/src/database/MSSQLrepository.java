@@ -1,8 +1,7 @@
 package database;
 
 import database.settings.Settings;
-import lombok.AllArgsConstructor;
-import lombok.Data;
+
 import resource.DBNode;
 import resource.DBNodeComposite;
 import resource.data.Row;
@@ -17,7 +16,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-@Data
+
 public class MSSQLrepository implements Repository {
 
 	private Settings settings;
@@ -51,7 +50,7 @@ public class MSSQLrepository implements Repository {
 	public DBNode getSchema() {
 
 		try {
-			System.out.println("usao u try");
+			//System.out.println("usao u try");
 			this.initConnection();
 
 			DatabaseMetaData metaData = connection.getMetaData();
@@ -92,6 +91,9 @@ public class MSSQLrepository implements Repository {
 
 					ResultSet foreignKeys = metaData.getImportedKeys(connection.getCatalog(), null, newTable.getName());
 					ResultSet primaryKeys = metaData.getPrimaryKeys(connection.getCatalog(), null, newTable.getName());
+					
+					
+					
 					String isNullable = columns.getString("IS_NULLABLE");
 					String isDef=columns.getString("COLUMN_DEF");
 					//System.out.println(isDef);
@@ -140,6 +142,8 @@ public class MSSQLrepository implements Repository {
 						while (foreignKeys.next()) {
 
 							String fkcolumnkey = foreignKeys.getString("FKCOLUMN_NAME");
+							String ftables=foreignKeys.getString("FKTABLE_NAME");
+							//System.out.println(ftables);
 							
 							if (fkcolumnkey.equals(attribute.toString())) {
 								AttributeConstraint constraint = new AttributeConstraint("FOREIGN_KEY", attribute,

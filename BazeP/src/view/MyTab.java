@@ -15,10 +15,11 @@ import javax.swing.border.LineBorder;
 public class MyTab extends JScrollPane {
 	private String name;
 	private JTable content;
+	private JScrollPane jsc;
 	
-	public MyTab(String name, JTable content) {
+	public MyTab(String name, JScrollPane content) {
 		this.name=name;
-		this.content=content;
+		this.jsc=content;
 		setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 	}
 	

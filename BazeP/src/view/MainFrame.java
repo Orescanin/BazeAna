@@ -51,7 +51,7 @@ public class MainFrame extends JFrame implements Subscriber {
 		//jTable=new JTable(tableModel);
 		
 	    
-		jTable = new JTable();
+		//jTable = new JTable();
 		tabPane=new MyTabPane();
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
@@ -88,9 +88,14 @@ public class MainFrame extends JFrame implements Subscriber {
 	 public void setAppCore(AppCore appCore) {
 	        this.appCore = appCore;
 	        this.appCore.addSubscriber(this);
-	        this.jTable.setModel(appCore.getTableModel());
+	        //this.jTable.setModel(appCore.getTableModel());
 	        //root=appCore.loadResource();
 	    }
+	 
+	 public void setJTableModel(JTable table) {
+		 table.setModel(appCore.getTableModel());
+		 jTable=table;
+	 }
 	 
 	
 	 
