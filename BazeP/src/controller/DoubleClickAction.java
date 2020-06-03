@@ -27,9 +27,8 @@ public class DoubleClickAction extends MouseAdapter {
 	private DBNodeComposite nodePressed = null;
 	private ArrayList<MyTab> tables = new ArrayList<>();
 	private MyTabPane tabPane;
-	//private JTable jTable;
+	private MyTabPane tabPane2;
 	private JScrollPane jsc;
-	private JFrame test=new JFrame();
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
@@ -40,6 +39,8 @@ public class DoubleClickAction extends MouseAdapter {
 			
 			
 			tabPane = MainFrame.getInstance().getTabPane();
+			tabPane2=MainFrame.getInstance().getTabPane2();
+			tabPane2.removeAll();
 			if (nodePressed instanceof Entity) {
 				
 				JTable jTable=new JTable();
@@ -60,14 +61,11 @@ public class DoubleClickAction extends MouseAdapter {
 					JTable jTable2=new JTable();
 					TableModel model2=new TableModel();
 					MainFrame.getInstance().getAppCore().setTableModel(model2);
-					model.setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(tabelaR.getName()));
+					model2.setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(tabelaR.getName()));
 					MainFrame.getInstance().setJTableModel(jTable2);
-					test.add(jTable2);
-					System.out.println(jTable2.getColumnCount()+" ovoliko ima kolonaaa");
-					break;
-					
+					JScrollPane jsc2=new JScrollPane(jTable2);
+					tabPane2.openTab(tabelaR, jsc2);
 				}
-				test.setVisible(true);
 				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getStablo());
 				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
 			}

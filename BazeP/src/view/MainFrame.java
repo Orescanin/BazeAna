@@ -11,8 +11,11 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTable;
+import javax.swing.JTextArea;
 import javax.swing.SwingUtilities;
 import javax.swing.table.TableModel;
+
+import org.omg.CORBA.VersionSpecHelper;
 
 import app.AppCore;
 import controller.DoubleClickAction;
@@ -38,21 +41,17 @@ public class MainFrame extends JFrame implements Subscriber {
 	private DBNode root;
 	private MyTreeView stablo;
 	private JSplitPane horizSplit;
+	private JSplitPane vertSplit;
 	private MyTabPane tabPane;
+	private MyTabPane tabPane2;
 	
 	
 	private MainFrame() {
 		
 		
 		
-
-
-		
-		//jTable=new JTable(tableModel);
-		
-	    
-		//jTable = new JTable();
 		tabPane=new MyTabPane();
+		tabPane2=new MyTabPane();
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
 		int screenHeight = screenSize.height;
@@ -63,11 +62,13 @@ public class MainFrame extends JFrame implements Subscriber {
 		
 		this.setJMenuBar(this.menuBar);
 		JScrollPane jsc=new JScrollPane(tabPane);
-		
-		
+		JScrollPane jsc2=new JScrollPane(tabPane2);
 		horizSplit=new JSplitPane(JSplitPane.HORIZONTAL_SPLIT);
-		
-		horizSplit.setRightComponent(jsc);
+		vertSplit=new JSplitPane(JSplitPane.VERTICAL_SPLIT);
+		vertSplit.setBottomComponent(jsc2);
+		vertSplit.setTopComponent(jsc);
+		vertSplit.setDividerLocation(145);
+		horizSplit.setRightComponent(vertSplit);
 		horizSplit.setDividerLocation(330);
 		horizSplit.setOneTouchExpandable(false);
 		this.add(horizSplit,BorderLayout.CENTER);
@@ -148,6 +149,13 @@ public class MainFrame extends JFrame implements Subscriber {
 
 		public JTable getjTable() {
 			return jTable;
+		}
+
+
+
+
+		public MyTabPane getTabPane2() {
+			return tabPane2;
 		}
 
 
