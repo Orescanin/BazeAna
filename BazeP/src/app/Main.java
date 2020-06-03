@@ -11,7 +11,7 @@ public class Main {
 	        mainFrame.setAppCore(appCore);
 	        mainFrame.getAppCore().loadResource();
 	      
-
+	        System.out.println("povezani at last again");
 
 	        //mainFrame.getAppCore().readDataFromTable("COUNTRIES");
 	        //mainFrame.getAppCore().loadResource();
