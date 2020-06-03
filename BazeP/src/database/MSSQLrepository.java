@@ -21,6 +21,7 @@ public class MSSQLrepository implements Repository {
 
 	private Settings settings;
 	private Connection connection;
+	private ArrayList<Attribute> relations=new ArrayList<>();
 
 	public MSSQLrepository(Settings settings) {
 		this.settings = settings;
@@ -136,13 +137,18 @@ public class MSSQLrepository implements Repository {
 									ConstraintType.PRIMARY_KEY);
 							constraint.setParent(attribute);
 							attribute.addChild(constraint);
-
+							relations.add(attribute);
+						
 						}
+					}
 
 						while (foreignKeys.next()) {
 
 							String fkcolumnkey = foreignKeys.getString("FKCOLUMN_NAME");
 							String ftables=foreignKeys.getString("FKTABLE_NAME");
+							//String pkcolumnkey = primaryKeys.getString("COLUMN_NAME");
+							//System.out.println(pkcolumnkey);
+							
 							//System.out.println(ftables);
 							
 							if (fkcolumnkey.equals(attribute.toString())) {
@@ -150,12 +156,18 @@ public class MSSQLrepository implements Repository {
 										ConstraintType.FOREIGN_KEY);
 								constraint.setParent(attribute);
 								attribute.addChild(constraint);
+								for(Attribute a:relations) {
+									if(a.toString().equals(attribute.toString())) {
+										a.setInRelationWith(attribute);
+										attribute.setInRelationWith(a);
+									}
+								}
 
 							}
 
 						}
 
-					}
+					
 
 				}
 				

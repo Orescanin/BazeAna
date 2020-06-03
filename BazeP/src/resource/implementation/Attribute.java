@@ -49,4 +49,7 @@ public class Attribute extends DBNodeComposite {
     public AttributeType getAttributeType() {
 		return attributeType;
 	}
+    public void setInRelationWith(Attribute inRelationWith) {
+		this.inRelationWith = inRelationWith;
+	}
 }

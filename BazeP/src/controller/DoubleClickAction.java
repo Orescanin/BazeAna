@@ -20,7 +20,7 @@ import view.TableModel;
 public class DoubleClickAction extends MouseAdapter {
 	private DBNodeComposite nodePressed = null;
 	private ArrayList<MyTab> tables = new ArrayList<>();
-	private MyTabPane tabPane = null;
+	private MyTabPane tabPane;
 	//private JTable jTable;
 	private JScrollPane jsc;
 	
