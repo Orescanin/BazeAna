@@ -65,6 +65,8 @@ public class DoubleClickAction extends MouseAdapter {
 					MainFrame.getInstance().setJTableModel(jTable2);
 					JScrollPane jsc2=new JScrollPane(jTable2);
 					tabPane2.openTab(tabelaR, jsc2);
+					//if(tabPane.getTabCount()>1)
+					//tabPane.setSelectedIndex(tabPane.getSelectedIndex()+1);
 				}
 				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getStablo());
 				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
