@@ -21,6 +21,7 @@ public class MyTabPane extends JTabbedPane {
 	private String imeTaba;
 	
 	
+	
 	public ArrayList<MyTab> getTabs() {
 		return tabs;
 	}

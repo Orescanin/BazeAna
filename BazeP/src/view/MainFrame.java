@@ -18,6 +18,7 @@ import javax.swing.table.TableModel;
 import org.omg.CORBA.VersionSpecHelper;
 
 import app.AppCore;
+import controller.ClickTabAction;
 import controller.DoubleClickAction;
 import model.DBTreeModel;
 import observer.Notification;
@@ -45,12 +46,12 @@ public class MainFrame extends JFrame implements Subscriber {
 	private MyTabPane tabPane;
 	private MyTabPane tabPane2;
 	
-	
 	private MainFrame() {
 		
 		
 		
 		tabPane=new MyTabPane();
+		tabPane.addMouseListener(new ClickTabAction());
 		tabPane2=new MyTabPane();
 		Toolkit kit = Toolkit.getDefaultToolkit();
 		Dimension screenSize = kit.getScreenSize();
