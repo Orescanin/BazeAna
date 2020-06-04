@@ -26,9 +26,6 @@ public class ClickTabAction extends MouseAdapter {
 	public void mouseClicked(MouseEvent e) {
 		
 		
-		//if(tabPane.getSelectedComponent()==null)
-		//	return;
-		
 		koren=(DBNodeComposite) MainFrame.getInstance().getStablo().getRoot();
 		if (e.getClickCount() == 1) {
 			
@@ -48,7 +45,6 @@ public class ClickTabAction extends MouseAdapter {
 				model3.setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(tabela.getName()));
 				MainFrame.getInstance().setJTableModel(jTable3);
 				JScrollPane jsc3=new JScrollPane(jTable3);
-				System.out.println("OVO JE JEBENA KOLONA OD TABABABABABA "+jTable3.getColumnName(0));
 				tabPane2.addTab(tabela.getName(), jsc3);
 			}
 			SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getStablo());

@@ -6,9 +6,6 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.time.format.TextStyle;
 import java.util.ArrayList;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.SwingUtilities;
@@ -19,16 +16,13 @@ import resource.DBNodeComposite;
 import resource.implementation.Attribute;
 import resource.implementation.Entity;
 import view.MainFrame;
-import view.MyTab;
 import view.MyTabPane;
 import view.TableModel;
 
 public class DoubleClickAction extends MouseAdapter {
 	private DBNodeComposite nodePressed = null;
-	private ArrayList<MyTab> tables = new ArrayList<>();
 	private MyTabPane tabPane;
 	private MyTabPane tabPane2;
-	private JScrollPane jsc;
 	@Override
 	public void mouseClicked(MouseEvent e) {
 
@@ -47,11 +41,17 @@ public class DoubleClickAction extends MouseAdapter {
 				TableModel model=new TableModel();
 				MainFrame.getInstance().getAppCore().setTableModel(model);
 				model.setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(nodePressed.getName()));
-				//MainFrame.getInstance().getAppCore().getTableModel().setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(nodePressed.getName()));
-				//jTable = MainFrame.getInstance().getjTable();
 				MainFrame.getInstance().setJTableModel(jTable);
 				JScrollPane jsc=new JScrollPane(jTable);
-				tabPane.openTab(nodePressed, jsc);
+				if(tabPane.indexOfTab(nodePressed.getName())==-1)
+				{
+					
+					tabPane.addTab(nodePressed.getName(), jsc);
+				}
+				else
+				{
+					tabPane.setSelectedIndex(tabPane.indexOfTab(nodePressed.getName()));
+				}
 				
 				for (DBNode child : nodePressed.getChildren()) {
 					Attribute relacija=((Attribute)child).getInRelationWith();
@@ -64,12 +64,10 @@ public class DoubleClickAction extends MouseAdapter {
 					model2.setRows(MainFrame.getInstance().getAppCore().getDatabase().readDataFromTable(tabelaR.getName()));
 					MainFrame.getInstance().setJTableModel(jTable2);
 					JScrollPane jsc2=new JScrollPane(jTable2);
-					tabPane2.openTab(tabelaR, jsc2);
-					//if(tabPane.getTabCount()>1)
-					//tabPane.setSelectedIndex(tabPane.getSelectedIndex()+1);
+					tabPane2.addTab(tabelaR.getName(), jsc2);
+					tabPane.setSelectedIndex(tabPane.indexOfTab(nodePressed.getName()));
 				}
 				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance().getStablo());
-				SwingUtilities.updateComponentTreeUI(MainFrame.getInstance());
 			}
 
 		}

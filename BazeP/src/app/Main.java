@@ -11,19 +11,6 @@ public class Main {
 	        mainFrame.setAppCore(appCore);
 	        mainFrame.getAppCore().loadResource();
 	      
-	        System.out.println("povezani at last again");
-
-	        //mainFrame.getAppCore().readDataFromTable("COUNTRIES");
-	        //mainFrame.getAppCore().loadResource();
-
-	        /*
-	        try {
-	            Thread.sleep(6000);
-	        } catch (InterruptedException e) {
-	            e.printStackTrace();
-	        }
-*/
-	        //mainFrame.getAppCore().readDataFromTable("dbo.JOBS");
 	    }
 
 }

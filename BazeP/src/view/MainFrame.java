@@ -36,7 +36,6 @@ public class MainFrame extends JFrame implements Subscriber {
 	private MenuBar menuBar= new MenuBar();
 	
 	private JTable jTable;
-	//private TableModel tableModel=new TableModel();
 	private AppCore appCore;
 	
 	private DBNode root;
@@ -90,8 +89,6 @@ public class MainFrame extends JFrame implements Subscriber {
 	 public void setAppCore(AppCore appCore) {
 	        this.appCore = appCore;
 	        this.appCore.addSubscriber(this);
-	        //this.jTable.setModel(appCore.getTableModel());
-	        //root=appCore.loadResource();
 	    }
 	 
 	 public void setJTableModel(JTable table) {
@@ -129,7 +126,6 @@ public class MainFrame extends JFrame implements Subscriber {
 			 
 			 panel.setBackground(Color.white);
 			 panel.setLayout(new BorderLayout());
-			 System.out.println(panel);
 			 panel.add(stablo,BorderLayout.WEST);
 			 horizSplit.setLeftComponent(panel);
 			 horizSplit.setDividerLocation(145);
@@ -140,7 +136,6 @@ public class MainFrame extends JFrame implements Subscriber {
 		 }
 	    
 	    public AppCore getAppCore() {
-	    	System.out.println("mf appcore");
 			return appCore;
 			
 		}
